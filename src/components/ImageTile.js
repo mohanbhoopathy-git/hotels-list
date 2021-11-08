@@ -5,6 +5,8 @@ import styled from 'styled-components';
 // import { getImage } from '../services/getImage';
 
 const ImgTile = styled.span`
+  width: 230px;
+  height: 160px;
   .badge {
     position: absolute;
     background-color: #ffffff;
@@ -22,7 +24,7 @@ export default function ImageTile(props) {
   return (
     <ImgTile>
       <div className='badge'>{title}</div>
-      <img src={url} alt={caption} />
+      <img src={url} alt={caption} height="160px" />
     </ImgTile>
   )
 }

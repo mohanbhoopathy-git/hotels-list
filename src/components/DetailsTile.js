@@ -41,6 +41,8 @@ const Details = styled.div`
   .price-info {
     margin-top: 0px;
     float: right;
+    text-align: right;
+    padding-right: 10px;
 
     div {
       margin-top: 0px;
@@ -56,7 +58,7 @@ const Details = styled.div`
 
     div.price { {
       font-size: 2rem;
-      
+
       .currency-symbol {
         font-size: .8rem;
         position: absolute;
@@ -94,7 +96,7 @@ export default function DetailsTile(props) {
           <div className="cancellation-type">{cancellationType === 'FREE_CANCELLATION' ? 'Free Cancellation' : ''}</div>
         </div>
         <div className="price-info">
-          <div className="per-night">1 night total ({currency})</div>
+          <div className="per-night"><strong>1</strong> night total ({currency})</div>
           <div className="price">
             <span className="currency-symbol">$</span>
             <span className="amount">{displayAmount}</span>

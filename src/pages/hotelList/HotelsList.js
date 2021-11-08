@@ -12,12 +12,12 @@ export default function HotelsList() {
 
   useEffect(() => {
     getAllHotels().then(result => {
-      setHotelsList(getSortedList(result, 'offer.displayPrice.amount').reverse());
+      const sorted = result.length ? getSortedList(result, 'offer.displayPrice.amount') : [];
+      setHotelsList(sorted.reverse());
     })
   }, []);
 
   const sortRecords = (sortByOrder) => {
-    console.log('sorting in progress - ', sortBy);
     setHotelsList(hotelsList && hotelsList.length && hotelsList.reverse());
     setSortBy(sortByOrder);
   }

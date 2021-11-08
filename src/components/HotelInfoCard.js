@@ -14,6 +14,11 @@ const Container = styled.div`
   padding-bottom: 5px;
 `;
 
+/* 
+  This component is like a container/index for the hotel info 
+  ** will consolidate the list under the hood
+ */
+
 export default function HotelInfoCard({ hotels }) {
   return (
     <Container>

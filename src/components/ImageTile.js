@@ -1,5 +1,4 @@
 import React from 'react'
-import { useImage } from 'react-image'
 import styled from 'styled-components';
 
 // import { getImage } from '../services/getImage';
@@ -16,7 +15,11 @@ const ImgTile = styled.span`
     color: red;
     display: inline;
   }
-`
+`;
+
+/* 
+  component to render the image section of the hotel info
+ */
 export default function ImageTile(props) {
   const { url = '', caption = 'Hotel' } = props.data.previewImage;
   const { title = '' } = props.data.promotion;

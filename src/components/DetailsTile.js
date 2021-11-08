@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import Rating from '../components/Rating'
-import styled from 'styled-components'
+import Rating from '../components/Rating';
+import styled from 'styled-components';
+
+import constants from '../constants/constants.json';
 
 const Details = styled.div`
   margin-top: 0px;
@@ -71,6 +73,13 @@ const Details = styled.div`
  }
 `;
 
+/* 
+  This component will displays the pricing and room details of the hotel
+  ** AppContainer will provide the rendering space
+  ** Header component will be common for all routes/pages.
+  ** HotelsList component is the single page of the app.
+    This component will be replaced based on the route in future
+ */
 export default function DetailsTile(props) {
   const {
     id,
@@ -82,28 +91,30 @@ export default function DetailsTile(props) {
       savings,
     }
   } = props.hotelDetails;
-  const savingsAmount = (savings && savings.amount) || 0;;
+  const savingsAmount = (savings && savings.amount) || 0;
+
   return (
-    <>
-      <Details key={id}>
-        <div className="hotel-info">
-          <span className="name">{title}</span>
-          <span className="rating"><Rating rating={rating} /></span>
-          <div className="address">{address}</div>
+    <Details key={id}>
+      <div className="hotel-info">
+        <span className="name">{title}</span>
+        <span className="rating"><Rating rating={rating} /></span>
+        <div className="address">{address}</div>
+      </div>
+
+      <div className='room-info'>
+        {/* eslint-disable-next-line */}
+        <div className="room-type"><a href="#">{offerName}</a> </div>
+        <div className="cancellation-type">{cancellationType === 'FREE_CANCELLATION' ? 'Free Cancellation' : ''}</div>
+      </div>
+
+      <div className="price-info">
+        <div className="per-night"><strong>1</strong> {constants.nightTotal} ({currency})</div>
+        <div className="price">
+          <span className="currency-symbol">$</span>
+          <span className="amount">{displayAmount}</span>
         </div>
-        <div className='room-info'>
-          <div className="room-type"><a href="#">{offerName}</a> </div>
-          <div className="cancellation-type">{cancellationType === 'FREE_CANCELLATION' ? 'Free Cancellation' : ''}</div>
-        </div>
-        <div className="price-info">
-          <div className="per-night"><strong>1</strong> night total ({currency})</div>
-          <div className="price">
-            <span className="currency-symbol">$</span>
-            <span className="amount">{displayAmount}</span>
-          </div>
-          {savings && <div className="save">Save ${savingsAmount}~</div>}
-        </div>
-      </Details>
-    </>
+        {savings && <div className="save">{constants.save} ${savingsAmount}~</div>}
+      </div>
+    </Details>
   )
 }

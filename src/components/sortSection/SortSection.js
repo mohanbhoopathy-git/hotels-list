@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import constants from '../constants/constants.json';
+import constants from '../../constants/constants.json';
 
 const Container = styled.div`
   display: flex;
@@ -20,16 +20,16 @@ const SortBy = styled.div`
 /* 
   Component to render the sorting section for the hotel listing
  */
-export default function SortSection({ count, sortBy, setSortBy }) {
+export default function SortSection({ count = 0, sortBy = constants.highToLow, setSortBy }) {
 
   return (
     <Container>
-      <span date-test-id="total-hotels">{count} {constants.hotelsIn} <strong>Sydney</strong></span>
+      <span date-testid="total-hotels">{count} {constants.hotelsIn} <strong>Sydney</strong></span>
       <SortBy>
         <span date-test-id="sortby-label"><strong>{constants.sortBy}</strong></span>
         <select date-test-id="sortby-select" name="sort-by" value={sortBy} onChange={e => setSortBy(e.target.value)}>
-          <option value="high-low">{constants.highToLow}</option>
-          <option value="low-high">{constants.lowToHigh}</option>
+          <option value={constants.highToLow}>{constants.highToLow}</option>
+          <option value={constants.lowToHigh}>{constants.lowToHigh}</option>
         </select>
       </SortBy>
     </Container >

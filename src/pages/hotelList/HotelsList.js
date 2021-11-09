@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import SortSection from '../../components/SortSection';
+import SortSection from '../../components/sortSection/SortSection';
 import HotelInfoCard from '../../components/HotelInfoCard';
 
 import { getAllHotels } from '../../services/hotelServices';
@@ -14,6 +14,8 @@ export default function HotelsList() {
     getAllHotels().then(result => {
       const sorted = result.length ? getSortedList(result, 'offer.displayPrice.amount') : [];
       setHotelsList(sorted.reverse());
+    }).catch(error => {
+      setHotelsList([]);
     })
   }, []);
 
